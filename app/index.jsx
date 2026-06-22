@@ -1,42 +1,51 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
-import Logo from "../assets/img/logo_light.png";
-import { Link } from "expo-router";
+import { StyleSheet } from 'react-native'
+import { Link } from 'expo-router'
+
+import ThemedView from "../components/ThemedView"
+import ThemedText from "../components/ThemedText"
+import ThemedLogo from "../components/ThemedLogo"
+import Spacer from "../components/Spacer"
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <Image source={Logo} style={styles.img} />
-      <Text style={styles.title}>The Number 1</Text>
-      <Text>Reading List App</Text>
-      <Link href="/about" style={[styles.link, { marginTop: 20 }]}>
-        <Text style={{ color: "blue" }}>About Page</Text>
-      </Link>      
-      <Link href="/contact" style={[styles.link, { marginTop: 20 }]}>
-        <Text style={{ color: "blue" }}>Contact Page</Text>
-      </Link>      
-    </View>
-  );
-};
+    <ThemedView style={styles.container}>
+      <ThemedLogo />
+      <Spacer />
 
-export default Home;
+      <ThemedText style={styles.title} title={true}>The Number 1</ThemedText>
+
+      <ThemedText style={{ marginTop: 10, marginBottom: 30 }}>
+        Reading List App
+      </ThemedText>
+
+      <Link href="/about" style={styles.link}>
+        <ThemedText>About Page</ThemedText>
+      </Link>
+
+      <Link href="/contact" style={styles.link}>
+        <ThemedText>Contact Page</ThemedText>
+      </Link>
+    </ThemedView>
+  )
+}
+
+export default Home
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   img: {
-    marginVertical: 20,
+    marginVertical: 20
   },
   title: {
+    fontWeight: 'bold',
     fontSize: 18,
-    fontWeight: "bold",
   },
   link: {
-    marginVertical: 20,
-    borderBottomWidth: 1,
+    marginVertical: 10,
+    borderBottomWidth: 1
   }
-});
+})
